@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
+
 import { FaBars } from 'react-icons/fa';
-import { links } from './data';
+import { links, social } from './data';
 import logo from './logo.svg';
 
 const NavBar = () => {
   const [showLinks, setShowLinks] = useState(false);
-  //   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
   const toggleLinks = () => {
     setShowLinks(!showLinks);
@@ -27,11 +27,7 @@ const NavBar = () => {
           </button>
         </div>
 
-        <div
-          className="links-container"
-          //   ref={linksContainerRef}
-          style={linkStyles}
-        >
+        <div className="links-container" style={linkStyles}>
           <ul className="links" ref={linksRef}>
             {links.map((link) => {
               return (
@@ -42,6 +38,16 @@ const NavBar = () => {
             })}
           </ul>
         </div>
+        {/* Social Links */}
+        <ul className="social-icons">
+          {social.map((socialIcon) => {
+            return (
+              <li key={socialIcon.id}>
+                <a href={socialIcon.url}>{socialIcon.icon}</a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </nav>
   );
